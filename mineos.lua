@@ -4,6 +4,7 @@
 os.startTimer(1)
 local timerStartTime = math.floor(os.clock()+0.5)
 
+--homescreen variables
 local currentscreen = "home"
 local clockicon = {"b","32768","32768","1","1","1","1","1","32768","32768","b",
 "32768","32768","1","1","1","16384","1","1","1","32768","32768",
@@ -43,6 +44,8 @@ local updateicon = {"b","32","32","32","32","32","32","32","32","32","b",
 "32","32","32","32","32","1","32","32","32","32","32",
 "b","32","32","32","32","32","32","32","32","32","b"
 }
+
+local currentpanel = 1
 
 --peripherals
 local speaker = peripheral.find("speaker")
@@ -698,10 +701,12 @@ while true do
 
     --idle clock events and keyboard input
     if currentscreen == "home" then
-        drawFromListAt(2, 3, clockicon, colors.lightGray)
-        drawFromListAt(15, 3, todoicon, colors.lightGray)
-        drawFromListAt(2, 12, updateicon, colors.lightGray)
-        drawFromListAt(15, 12, calcicon, colors.lightGray)
+        if currentpanel == 1 then
+            drawFromListAt(2, 3, clockicon, colors.lightGray)
+            drawFromListAt(15, 3, todoicon, colors.lightGray)
+            drawFromListAt(2, 12, updateicon, colors.lightGray)
+            drawFromListAt(15, 12, calcicon, colors.lightGray)
+        end
         ininput = false
     elseif currentscreen == "clock" then
         drawTimer(timertime)
