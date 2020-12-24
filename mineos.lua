@@ -708,6 +708,12 @@ while true do
             drawFromListAt(15, 12, calcicon, colors.lightGray)
         end
         ininput = false
+
+        if button == 203 and currentpanel > 0 then
+            currentpanel = currentpanel - 1
+        elseif button == 205 and currentpanel < 2 then
+            currentpanel = currentpanel + 1
+        end
     elseif currentscreen == "clock" then
         drawTimer(timertime)
         if timeron == false then
